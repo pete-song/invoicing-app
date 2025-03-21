@@ -2,24 +2,9 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-import { CirclePlus } from "lucide-react";
-
-import { db } from "@/db";
-import { Invoices } from "@/db/schema";
-import { eq, and } from "drizzle-orm";
+import { Customers, Invoices } from "@/db/schema";
 import { cn } from "@/lib/utils";
-import { notFound } from "next/navigation";
-import { auth } from "@clerk/nextjs/server";
 import Container from "@/components/Container";
 import {
   DropdownMenu,

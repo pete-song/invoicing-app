@@ -1,38 +1,8 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
-import { CirclePlus } from "lucide-react";
-
 import { db } from "@/db";
 import { Invoices, Customers } from "@/db/schema";
 import { eq, and, isNull } from "drizzle-orm";
-import { cn } from "@/lib/utils";
 import { notFound } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
-import Container from "@/components/Container";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-
-import { AVAILABLE_STATUSES } from "@/data/invoices";
-import { updateStatusAction } from "@/app/actions";
-
-import { ChevronDown } from "lucide-react";
-
 import Invoice from "./Invoice";
 
 export default async function InvoicePage({
