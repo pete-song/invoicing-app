@@ -27,8 +27,7 @@ export default async function RootLayout(props: {
   children: ReactNode;
   params: Promise<{ id: string }>;
 }) {
-  const { children, params } = props;
-  const { id } = await params;
+  const { children } = props;
 
   return (
     <ClerkProvider>

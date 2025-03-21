@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 
 import { db } from "@/db";
 import { Invoices, Customers } from "@/db/schema";
-import { eq, and, isNull } from "drizzle-orm";
+import { eq} from "drizzle-orm";
 import { cn } from "@/lib/utils";
 import { notFound } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
