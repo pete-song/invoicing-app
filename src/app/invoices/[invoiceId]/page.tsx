@@ -5,14 +5,18 @@ import { notFound } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
 import Invoice from "./Invoice";
 
-interface InvoicePageProps {
-  params: { invoiceId: string };
-}
-
-export default async function InvoicePage({ params }: InvoicePageProps) {
+export default async function InvoicePage({
+  params,
+}: { params: { invoiceId: string } }) {
   const { userId, orgId } = await auth();
+
   if (!userId) return;
-  const invoiceId = parseInt(params.invoiceId);
+
+  const invoiceId = Number.parseInt(params.invoiceId);
+
+  if (Number.isNaN(invoiceId)) {
+    throw new Error("Invalid Invoice ID");
+  }
 
   let result;
   if (orgId) {
@@ -39,9 +43,6 @@ export default async function InvoicePage({ params }: InvoicePageProps) {
       .limit(1);
   }
 
-  if (isNaN(invoiceId)) {
-    throw new Error("Invalid Invoice ID");
-  }
   if (!result) {
     notFound();
   }

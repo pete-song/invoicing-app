@@ -26,7 +26,7 @@ const Header = () => {
           </div>
           <div>
             <SignedOut>
-              <SignInButton />
+              <SignInButton forceRedirectUrl="/dashboard" />
             </SignedOut>
             <SignedIn>
               <UserButton />
